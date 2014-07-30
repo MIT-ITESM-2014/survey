@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Navigation Drawer -->
+    <array name="navigation_icons">
+        <item>@drawable/ic_left_traffic</item>
+        <item>@drawable/ic_left_shops</item>
+        <item>@drawable/ic_left_roads_and_regulations</item>
+        <item>@drawable/ic_left_traffic_disruptions</item>
+        <item>@drawable/ic_left_delivery_tracking</item>        
+    </array>
+    <array name="navigation_icons_extra">
+        <item>@drawable/ic_left_upload_data</item>
+        <item>@drawable/ic_left_guidelines</item>
+        <item>@drawable/ic_left_notes</item>
+        <item>@drawable/ic_left_schedule</item> 
+    </array>
+</resources>

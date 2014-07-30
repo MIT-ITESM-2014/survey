@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/navigation_profile_padding"
+   	android:background="@drawable/profile_city_bg"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/navigation_profile_text"
+        android:layout_marginTop="@dimen/navigation_profile_margin_top"
+        android:layout_marginBottom="@dimen/navigation_profile_margin"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/kmName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/navigation_profile_text"
+        android:layout_marginBottom="@dimen/navigation_profile_margin"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/navigation_profile_text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</LinearLayout>
