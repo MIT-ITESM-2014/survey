@@ -36,8 +36,9 @@
 	        android:layout_width="0dp"
 	        android:layout_height="wrap_content"
 	        android:layout_weight="1"
+	        android:background="@color/traffic_btn"
 	        android:contentDescription="@string/image_description"
-	        android:src="@drawable/ic_action_new" />
+	        android:src="@drawable/ic_traffic_minus" />
         
 		<TextView
 		    android:id="@+id/counter"
@@ -53,8 +54,9 @@
 	        android:layout_width="0dp"
 	        android:layout_height="wrap_content"
 	        android:layout_weight="1"
+	        android:background="@color/traffic_btn"
 	        android:contentDescription="@string/image_description"
-	        android:src="@drawable/ic_action_new" />
+	        android:src="@drawable/ic_traffic_plus" />
 	    
 	</LinearLayout>
 

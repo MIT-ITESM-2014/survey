@@ -8,8 +8,6 @@ import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.ColorRes;
 import org.androidannotations.annotations.res.StringRes;
 
-import android.app.Activity;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Menu;
@@ -22,7 +20,7 @@ import edu.mit.lastmile.km2.model.TrafficCount;
 import edu.mit.lastmile.km2.view.TrafficCounter;
 
 @EActivity(R.layout.activity_traffic)
-public class TrafficActivity extends Activity {
+public class TrafficActivity extends BaseActivity {
 	
 	private static final int START = 0;
 	private static final int IN_PROGRESS = 1;
@@ -51,10 +49,10 @@ public class TrafficActivity extends Activity {
 	protected TextView countdown;
 	
 	@Bean
-	App app;
+	protected App mApp;
 	
 	@Bean
-	TrafficCountDataSource dao;
+	protected TrafficCountDataSource dao;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -79,18 +77,13 @@ public class TrafficActivity extends Activity {
 	@AfterViews
 	protected void init(){
 		initView();
-		initActionBar();
+		setActionBarColor(traffic);
 		initCounters();
 	}
 	
 	private void initView(){
 		actionBtn.setText(trafficStartBtn);
 		updateCountdown(START_TIME);
-	}
-	
-	private void initActionBar(){
-		ColorDrawable c = new ColorDrawable(traffic);
-		getActionBar().setBackgroundDrawable(c);		
 	}
 	
 	private void initCounters(){
@@ -148,9 +141,9 @@ public class TrafficActivity extends Activity {
 		TrafficCount element = getData();
 		dao.open();
 		if(dao.insert(element) == -1){
-			app.databaseError(this);
+			mApp.databaseError();
 		}else{
-			app.databaseSuccess(this);
+			mApp.databaseSuccess();
 		}
 		dao.close();		
 	}

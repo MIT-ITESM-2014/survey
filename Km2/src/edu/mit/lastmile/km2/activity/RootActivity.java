@@ -5,14 +5,15 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.FragmentById;
 
 import android.app.ActionBar;
-import android.app.Activity;
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
+import edu.mit.lastmile.km2.Config;
 import edu.mit.lastmile.km2.R;
 import edu.mit.lastmile.km2.fragment.NavigationDrawerFragment;
+import edu.mit.lastmile.km2.fragment.delivery.DeliveryTrackingDaysFragment;
+import edu.mit.lastmile.km2.fragment.delivery.DeliveryTrackingDaysFragment_;
 import edu.mit.lastmile.km2.fragment.root.MainMenuFragment_;
 import edu.mit.lastmile.km2.fragment.shops.ShopsListFragment;
 import edu.mit.lastmile.km2.fragment.shops.ShopsListFragment_;
@@ -20,7 +21,7 @@ import edu.mit.lastmile.km2.fragment.traffic.TrafficListFragment;
 import edu.mit.lastmile.km2.fragment.traffic.TrafficListFragment_;
 
 @EActivity(R.layout.activity_root)
-public class RootActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+public class RootActivity extends BaseActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -49,6 +50,7 @@ public class RootActivity extends Activity implements NavigationDrawerFragment.N
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+    	Log.d(Config.LOG_TAG, "position: " + position);
         switch (position) {
 			case TrafficListFragment.SECTION:
 				replaceFragment(new TrafficListFragment_());
@@ -56,16 +58,26 @@ public class RootActivity extends Activity implements NavigationDrawerFragment.N
 			case ShopsListFragment.SECTION:
 				replaceFragment(new ShopsListFragment_());
 				break;
+			case DeliveryTrackingDaysFragment.SECTION:
+				replaceFragment(new DeliveryTrackingDaysFragment_());
 			default:
 				replaceFragment(new MainMenuFragment_());
 				break;
 		}
     }
     
-    public void replaceFragment(Fragment fragment){
-    	getFragmentManager().beginTransaction()
-    		.replace(R.id.container, fragment)
-    		.commit();
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (!mNavigationDrawerFragment.isDrawerOpen()) {
+            // Only show items in the action bar relevant to this screen
+            // if the drawer is not showing. Otherwise, let the drawer
+            // decide what to show in the action bar.
+            //getMenuInflater().inflate(R.menu.global, menu);
+            restoreActionBar();
+            return false;
+        }
+        return false;
+        //return super.onCreateOptionsMenu(menu);
     }
 
     public void onSectionAttached(int number) {
@@ -76,6 +88,8 @@ public class RootActivity extends Activity implements NavigationDrawerFragment.N
 			case ShopsListFragment.SECTION:
 				mTitle = getString(R.string.shops_title);
 				break;
+			case DeliveryTrackingDaysFragment.SECTION:
+				mTitle = getString(R.string.delivery_tracking_btn);
 			default:
 				mTitle = getString(R.string.app_name);
 				break;
@@ -87,46 +101,6 @@ public class RootActivity extends Activity implements NavigationDrawerFragment.N
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        if(!mNavigationDrawerFragment.isDrawerOpen()) {
-        	/*switch (mSection) {
-			case TrafficListFragment.SECTION:
-				setNewActionMenu(menu);
-				break;
-
-			default:
-				
-				break;
-			}
-            return true;*/
-        }
-        return super.onCreateOptionsMenu(menu);
-    }
-    
-    /*private void setNewActionMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.root, menu);
-        restoreActionBar();
-    }*/
-    
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-    	// TODO Auto-generated method stub
-    	return super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 }

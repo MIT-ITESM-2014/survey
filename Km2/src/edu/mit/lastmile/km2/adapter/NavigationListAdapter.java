@@ -3,6 +3,7 @@ package edu.mit.lastmile.km2.adapter;
 import java.util.ArrayList;
 
 import org.androidannotations.annotations.AfterInject;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 import org.androidannotations.annotations.res.StringArrayRes;
@@ -12,7 +13,9 @@ import android.content.res.TypedArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import edu.mit.lastmile.km2.App;
 import edu.mit.lastmile.km2.R;
+import edu.mit.lastmile.km2.model.Km;
 import edu.mit.lastmile.km2.model.NavigationItem;
 import edu.mit.lastmile.km2.view.NavigationItemView;
 import edu.mit.lastmile.km2.view.NavigationMenuView_;
@@ -31,6 +34,9 @@ public class NavigationListAdapter extends BaseAdapter {
     @StringArrayRes(R.array.navigation_items_extra)
     protected String[] mExtraArray;
     
+    @Bean
+    protected App mApp;
+    
     // No annotation available for resource
     protected TypedArray mIconArray;
 	protected TypedArray mIconExtraArray;
@@ -41,7 +47,8 @@ public class NavigationListAdapter extends BaseAdapter {
     void initItems(){
     	int length = mStrArray.length;
     	items = new ArrayList<NavigationItem>();
-    	items.add(new NavigationItem("Gury", "Km2", "Beijing China"));
+    	Km k = mApp.getUserKm();
+    	items.add(new NavigationItem("", k.getName(), k.getLocation()));
     	mIconArray = mContext.getResources().obtainTypedArray(R.array.navigation_icons);
     	mIconExtraArray = mContext.getResources().obtainTypedArray(R.array.navigation_icons_extra);
     	for(int i = 0; i < length; ++i){

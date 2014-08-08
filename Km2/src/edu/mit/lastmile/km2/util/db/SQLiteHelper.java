@@ -1,14 +1,15 @@
-package edu.mit.lastmile.km2.db;
+package edu.mit.lastmile.km2.util.db;
 
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.Transactional;
+import org.androidannotations.annotations.EBean.Scope;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import edu.mit.lastmile.km2.Config;
 
-@EBean
+@EBean(scope = Scope.Singleton)
 public class SQLiteHelper extends SQLiteOpenHelper{
 
 	public SQLiteHelper(Context c){

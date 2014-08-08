@@ -38,7 +38,7 @@ public class TrafficCountListAdapter extends BaseAdapter {
 		try {
 			mItems = dao.getElements();
 		} catch (ParseException e) {
-			app.databaseError(mContext);
+			app.databaseError();
 		}finally{
 			dao.close();
 		}

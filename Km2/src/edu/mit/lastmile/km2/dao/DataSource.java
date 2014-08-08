@@ -12,11 +12,13 @@ import org.androidannotations.annotations.RootContext;
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import edu.mit.lastmile.km2.db.SQLiteHelper;
+import edu.mit.lastmile.km2.util.db.SQLiteHelper;
 
 @EBean
 public class DataSource {
 
+	public static final String COLUMN_ID = "id";
+	
 	private SQLiteDatabase db;
 	
 	@Bean

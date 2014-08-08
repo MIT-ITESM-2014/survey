@@ -50,8 +50,8 @@
 		
 		<Button
 	        android:id="@+id/uploadBtn"
+	        android:drawableStart="@drawable/ic_menu_upload_data"
 	        android:background="@color/main_menu_upload_btn"
-	        android:gravity="center"
 	        android:text="@string/upload_btn"
 	        style="@style/MenuButton" />
 		

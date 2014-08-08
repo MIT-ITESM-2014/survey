@@ -24,10 +24,18 @@
 	        android:visibility="gone" >
 	       
 	      	<ProgressBar
+	      	    android:id="@+id/loadingProgressBar"
 		        style="?android:attr/progressBarStyleLarge"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
 		        android:layout_centerInParent="true" />
+	      	
+	      	<TextView 
+	      	    android:id="@+id/loadingText"
+	      		android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_centerHorizontal="true"
+		        android:layout_below="@+id/loadingProgressBar" />
 	        
 	    </RelativeLayout>
 	    
@@ -36,7 +44,8 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="fill_parent"
 	        android:padding="@dimen/activity_padding"
-	        android:layout_centerInParent="true" >
+	        android:layout_centerInParent="true"
+	        android:visibility="visible" >
 	
 	        <ImageView
 	            android:id="@+id/logo"

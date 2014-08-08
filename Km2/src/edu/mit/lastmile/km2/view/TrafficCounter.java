@@ -4,6 +4,7 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.res.DimensionRes;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -20,6 +21,9 @@ public class TrafficCounter extends LinearLayout {
 	
 	private int mCount = 0;
 	
+	@DimensionRes
+	protected float trafficCounterPadding;
+	
 	@ViewById
 	protected TextView label, counter;
 	
@@ -35,7 +39,9 @@ public class TrafficCounter extends LinearLayout {
 	
 	@AfterViews
 	protected void init(){
+		int padding = (int) trafficCounterPadding;
 		setWeightSum(WEIGHT_SUM);
+		setPadding(padding, padding, padding, padding);
 		updateCounter();
 	}
 	

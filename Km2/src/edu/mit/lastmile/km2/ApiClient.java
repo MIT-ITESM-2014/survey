@@ -13,8 +13,8 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import edu.mit.lastmile.km2.model.Token;
-import edu.mit.lastmile.km2.net.ServerRequest;
-import edu.mit.lastmile.km2.net.ServerResponse;
+import edu.mit.lastmile.km2.util.net.ServerRequest;
+import edu.mit.lastmile.km2.util.net.ServerResponse;
 
 @EBean(scope = Scope.Singleton)
 public class ApiClient {
@@ -115,7 +115,6 @@ public class ApiClient {
 				onError(ServerRequest.ERROR_STATUS);
 			}		
 		}
-		
 
 		@Override
 		public void onError(int statusCode) {

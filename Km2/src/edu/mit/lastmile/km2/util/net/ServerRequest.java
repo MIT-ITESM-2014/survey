@@ -1,4 +1,4 @@
-package edu.mit.lastmile.km2.net;
+package edu.mit.lastmile.km2.util.net;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

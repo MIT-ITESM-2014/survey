@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- App -->
+    <color name="action_btn_background">#0091EA</color>
+    <color name="action_btn_text">#FFFFFF</color>
+    <color name="save_btn_background">#40C4FF</color>
+    
     <!-- Login -->
     <color name="login_background">#AAFFFFFF</color>
     <color name="login_btn_color">#FFFFFF</color>
@@ -16,9 +21,16 @@
     <color name="navigation_menu_background">#FFFFFF</color>
     
     <!-- Section Colors -->
+    <color name="main_menu">#222222</color>
     <color name="traffic">#DF2132</color>
     <color name="shops">#6230EA</color>
     <color name="roads_and_regulations">#AEEA00</color>
     <color name="traffic_disruptions">#FF6D00</color>
     <color name="delivery_tracking">#FFAB00</color>
+    
+    <!-- Traffic -->
+    <color name="traffic_btn">#00FFFFFF</color>
+    
+    <!-- Delivery Tracking -->
+    <color name="card_background">#222222</color>
 </resources>

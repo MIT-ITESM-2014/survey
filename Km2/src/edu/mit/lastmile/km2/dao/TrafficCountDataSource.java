@@ -23,7 +23,6 @@ public class TrafficCountDataSource extends DataSource {
 											+ " rigid_trucks INTEGER DEFAULT 0, articulated_trucks INTEGER DEFAULT 0, pedestrians INTEGER DEFAULT 0, status INTEGER DEFAULT 0)";
 	public static final String DROP_TABLE = "DROP TABLE IF EXISTS traffic_counts";
 	public static final String TABLE = "traffic_counts";
-	public static final String COLUMN_ID = "id";
 	public static final String COLUMN_STARTED_AT = "started_at";
 	public static final String COLUMN_ENDED_AT = "started_at";
 	public static final String COLUMN_CARS = "cars";
@@ -46,10 +45,11 @@ public class TrafficCountDataSource extends DataSource {
 	public ArrayList<TrafficCount> getElements() throws ParseException{
 		ArrayList<TrafficCount> list = new ArrayList<TrafficCount>();
 		Cursor result = selectAll();
-		Log.d(Config.LOG_TAG, "getElements");
+		Log.d(Config.LOG_TAG, "Start -Traffic Count-");
 		while(result.moveToNext()){
 			list.add(fromCursor(result));
 		}
+		Log.d(Config.LOG_TAG, "End -Traffic Count-");
 		return list;
 	}
 	

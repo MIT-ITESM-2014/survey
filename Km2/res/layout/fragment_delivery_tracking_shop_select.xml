@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/delivery_tracking_shop_select_instructions"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/continueBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/delivery_tracking_shop_select_continue_btn"
+        style="@style/ActionButton" />
+    
+	<it.gmariotti.cardslib.library.view.CardGridView
+	    android:id="@+id/shopGrid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnWidth="@dimen/delivery_tracking_shop_column"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="@dimen/delivery_tracking_shop_vspacing"
+        android:horizontalSpacing="@dimen/delivery_tracking_shop_hspacing"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        card:list_card_layout_resourceID="@layout/list_card_thumbnail_layout" />
+
+</LinearLayout>

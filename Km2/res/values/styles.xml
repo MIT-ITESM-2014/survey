@@ -29,4 +29,18 @@
         <item name="android:textSize">@dimen/button_text</item>
     </style>
     
+    <style name="SaveButton" parent="android:style/Widget.Button">
+        <item name="android:background">@color/save_btn_background</item>
+        <item name="android:textColor">@color/action_btn_text</item>
+        <item name="android:textSize">@dimen/action_btn_text</item>
+        <item name="android:gravity">center</item>
+    </style>
+    
+    <style name="ActionButton" parent="android:style/Widget.Button">
+        <item name="android:background">@color/action_btn_background</item>
+        <item name="android:textColor">@color/action_btn_text</item>
+        <item name="android:textSize">@dimen/action_btn_text</item>
+        <item name="android:gravity">center</item>
+    </style>
+    
 </resources>

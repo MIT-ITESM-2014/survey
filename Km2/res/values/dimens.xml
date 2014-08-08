@@ -5,6 +5,9 @@
     <dimen name="activity_vertical_margin">22dp</dimen>
     <dimen name="activity_padding">18dp</dimen>
     
+    <!-- App -->
+    <dimen name="action_btn_text">14sp</dimen>
+    
     <!-- Field Values -->
     <dimen name="field_margin">20dp</dimen>
     <dimen name="button_margin">10dp</dimen>
@@ -23,4 +26,20 @@
     <dimen name="navigation_menu_padding">6dp</dimen>
     <dimen name="navigation_menu_height">48dp</dimen>
     <dimen name="navigation_menu_icon">24dp</dimen>
+    
+    <!-- Traffic -->
+    <dimen name="traffic_counter_padding">10dp</dimen>
+    
+    <!-- Shops -->
+    <dimen name="shops_item_padding">15dp</dimen>
+    <dimen name="shops_item_field_margin">5dp</dimen>
+    <dimen name="shops_label_width">118dp</dimen>
+    <dimen name="shops_field_width">200dp</dimen>
+    <dimen name="shops_field_text">16sp</dimen>
+    <dimen name="shops_field_margin">18dp</dimen>
+    
+    <!-- Delivery Tracking -->
+    <dimen name="delivery_tracking_shop_column">160dp</dimen>
+    <dimen name="delivery_tracking_shop_vspacing">6dp</dimen>
+    <dimen name="delivery_tracking_shop_hspacing">3dp</dimen>
 </resources>
