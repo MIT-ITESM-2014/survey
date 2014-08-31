@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <RelativeLayout
+        android:id="@+id/topView"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<TextView 
+		    android:id="@+id/title"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentTop="true"
+		    android:textSize="@dimen/upload_box_text" />
+		
+		<TextView
+		    android:id="@+id/counter"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:layout_above="@+id/legend"
+		    android:textSize="@dimen/upload_box_counter_text" />
+		
+		<TextView 
+		    android:id="@+id/legend"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:layout_alignParentBottom="true"
+		    android:textSize="@dimen/upload_box_text" />
+        
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/uploadBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/image_description"
+        android:src="@drawable/ic_summary_upload_btn" />
+
+</merge>
