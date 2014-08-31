@@ -131,6 +131,11 @@
     <string name="delivery_tracking_shop_select_continue_btn">SAVE AND CONTINUE</string>
     <string name="delivery_tracking_shop_confirmation_instructions">Confirm and save the selected shops.</string>
     
+    <!-- Summary -->
+    <string name="summary_title">Summary</string>
+    <string name="summary_upload_btn"></string>
+    
+    <!-- Activities -->
     <string name="title_activity_traffic">Traffic</string>
     <string name="title_activity_shops">Shops</string>
     <string name="title_activity_delivery_tracking">Delivery Tracking</string>

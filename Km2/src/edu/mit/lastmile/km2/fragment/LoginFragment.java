@@ -14,6 +14,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
 import android.widget.Button;
@@ -24,9 +25,13 @@ import edu.mit.lastmile.km2.ApiClientResponse;
 import edu.mit.lastmile.km2.App;
 import edu.mit.lastmile.km2.Config;
 import edu.mit.lastmile.km2.R;
+import edu.mit.lastmile.km2.dao.BlockDataSource;
 import edu.mit.lastmile.km2.dao.KmDataSource;
+import edu.mit.lastmile.km2.dao.StreetDataSource;
 import edu.mit.lastmile.km2.dao.TokenDataSource;
+import edu.mit.lastmile.km2.model.Block;
 import edu.mit.lastmile.km2.model.Km;
+import edu.mit.lastmile.km2.model.Street;
 import edu.mit.lastmile.km2.model.Token;
 
 @EFragment(R.layout.fragment_main)
@@ -58,6 +63,12 @@ public class LoginFragment extends Fragment {
 	
 	@Bean
 	protected KmDataSource kDao;
+	
+	@Bean
+	protected BlockDataSource bDao;
+	
+	@Bean
+	protected StreetDataSource sDao;
 	
 	@Click(R.id.loginBtn)
 	protected void loginBtnOnClick(){
@@ -173,7 +184,6 @@ public class LoginFragment extends Fragment {
 				if(tmp != -1){
 					app.setUserKm(k);
 					loadKmData();
-					app.startRootActivity(getActivity());
 				}else{
 					throw new SQLiteException(getString(R.string.database_error));
 				}
@@ -223,12 +233,65 @@ public class LoginFragment extends Fragment {
 	}
 	
 	private void loadKmDataOnSuccess(JSONObject response){
-		Log.d(Config.LOG_TAG, response.toString());
+		try{
+			if(response.has("contents")){
+				loadBlocks(response.getJSONObject("contents"));
+			}else{
+				loadKmDataOnError();
+			}
+		}catch(JSONException e){
+			Log.e(Config.LOG_TAG, e.getMessage());
+			loadKmDataOnError();
+		}
+	}
+	
+	private void loadBlocks(JSONObject response){
+		try{
+			if(response.has("blocks")){
+				ArrayList<Block> objects = bDao.getElements(response.getJSONArray("blocks"));
+				bDao.open();
+				if(bDao.massInsert(objects) == -1){
+					loadKmDataOnError();
+				}else{
+					loadStreets(response);
+				}
+			}
+		}catch(JSONException e){
+			Log.e(Config.LOG_TAG, "" + e.getLocalizedMessage());
+			loadKmDataOnError();
+		}catch(SQLException e){
+			Log.e(Config.LOG_TAG, "" + e.getLocalizedMessage());
+			loadKmDataOnError();
+		}finally{
+			bDao.close();
+		}
+	}
+	
+	private void loadStreets(JSONObject response){
+		try{
+			if(response.has("streets")){
+				ArrayList<Street> objects = sDao.getElements(response.getJSONArray("streets"));
+				sDao.open();
+				if(sDao.massInsert(objects) == -1){
+					loadKmDataOnError();
+				}else{
+					app.startRootActivity(getActivity());
+				}
+			}
+		}catch(JSONException e){
+			Log.e(Config.LOG_TAG, "" + e.getLocalizedMessage());
+			loadKmDataOnError();
+		}catch(SQLException e){
+			Log.e(Config.LOG_TAG, "" + e.getLocalizedMessage());
+			loadKmDataOnError();
+		}finally{
+			sDao.close();
+		}
 	}
 	
 	private void loadKmDataOnError(){
 		app.serverError();
-		// TODO retry view
+		loaded(); // TODO retry view
 	}
 	
 	private void fetchDataOnError(){
@@ -237,7 +300,8 @@ public class LoginFragment extends Fragment {
 	}
 	
 	private void error(){
-		app.authError(getActivity());
+		//app.authError(getActivity());
+		app.serverError();
 		loaded();
 	}
 	

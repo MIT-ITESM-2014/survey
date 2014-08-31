@@ -15,6 +15,8 @@ public class Street {
 		this.researchId = researchId;
 	}
 
+	public Street() {}
+
 	public long getId() {
 		return id;
 	}
@@ -49,8 +51,7 @@ public class Street {
 
 	@Override
 	public String toString() {
-		return "Street [id=" + id + ", kmId=" + kmId + ", blockId=" + blockId
-				+ ", researchId=" + researchId + "]";
+		return "" + researchId;
 	}
 
 }

@@ -7,8 +7,6 @@ import org.androidannotations.annotations.EBean;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.util.Log;
-import edu.mit.lastmile.km2.Config;
 import edu.mit.lastmile.km2.model.Shop;
 
 @EBean
@@ -45,11 +43,9 @@ public class ShopDataSource extends DataSource {
 	public ArrayList<Shop> getElements() throws ParseException{
 		ArrayList<Shop> list = new ArrayList<Shop>();
 		Cursor result = selectAll();
-		Log.d(Config.LOG_TAG, "Start -Shops-");
 		while(result.moveToNext()){
 			list.add(fromCursor(result));
 		}
-		Log.d(Config.LOG_TAG, "End -Shops-");
 		return list;
 	}
 	
@@ -67,7 +63,7 @@ public class ShopDataSource extends DataSource {
 			"" + streetId,
 			"" + blockId
 		};
-		return getDb().query(TABLE, null, "WHERE shops.street_id = ? AND shops.block_id = ?", args, null, null, null);
+		return getDb().query(TABLE, null, "shops.street_id = ? AND shops.block_id = ?", args, null, null, null);
 	}
 	
 	private Cursor selectAll(){
@@ -91,13 +87,11 @@ public class ShopDataSource extends DataSource {
 		s.setNotes(c.getString(12));
 		s.setImage(c.getString(13));
 		s.setShopId(c.getString(14));
-		Log.d(Config.LOG_TAG, s.toString());
 		return s;
 	}
 	
 	public static ContentValues getContentValues(Shop element){
 		ContentValues cv = new ContentValues();
-		Log.d(Config.LOG_TAG, element.toString());
 		cv.put(COLUMN_KM_ID, element.getKmId());
 		cv.put(COLUMN_STREET_ID, element.getKmId());
 		cv.put(COLUMN_BLOCK_ID, element.getBlockId());

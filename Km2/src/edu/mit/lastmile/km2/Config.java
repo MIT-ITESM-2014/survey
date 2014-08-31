@@ -1,8 +1,10 @@
 package edu.mit.lastmile.km2;
 
+import edu.mit.lastmile.km2.dao.BlockDataSource;
 import edu.mit.lastmile.km2.dao.DeliveryShopDataSource;
 import edu.mit.lastmile.km2.dao.KmDataSource;
 import edu.mit.lastmile.km2.dao.ShopDataSource;
+import edu.mit.lastmile.km2.dao.StreetDataSource;
 import edu.mit.lastmile.km2.dao.TokenDataSource;
 import edu.mit.lastmile.km2.dao.TrafficCountDataSource;
 
@@ -34,6 +36,8 @@ public class Config {
 		public static final int VERSION = 1;
 		public static final String[] SQL_CREATE_STMT = {
 			TokenDataSource.CREATE_TABLE,
+			BlockDataSource.CREATE_TABLE,
+			StreetDataSource.CREATE_TABLE,
 			KmDataSource.CREATE_TABLE,
 			TrafficCountDataSource.CREATE_TABLE,
 			ShopDataSource.CREATE_TABLE,
@@ -41,6 +45,8 @@ public class Config {
 		};
 		public static final String[] SQL_DELETE_STMT = {
 			TokenDataSource.DROP_TABLE,
+			BlockDataSource.DROP_TABLE,
+			StreetDataSource.DROP_TABLE,
 			KmDataSource.DROP_TABLE,
 			TrafficCountDataSource.DROP_TABLE,
 			ShopDataSource.DROP_TABLE,
@@ -48,7 +54,7 @@ public class Config {
 		};
 	}
 	public static final class Server{
-		public static final String ENDPOINT = "http://18.111.113.144:3000";
+		public static final String ENDPOINT = "http://192.168.1.86:3000";
 		public static final String CONTROLLER = "/api";
 		public static final String MEDIA_PATH = "/media";
 		public static final String ENCODING = "UTF-8";

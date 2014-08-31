@@ -7,9 +7,7 @@ import org.androidannotations.annotations.FragmentById;
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Menu;
-import edu.mit.lastmile.km2.Config;
 import edu.mit.lastmile.km2.R;
 import edu.mit.lastmile.km2.fragment.NavigationDrawerFragment;
 import edu.mit.lastmile.km2.fragment.delivery.DeliveryTrackingDaysFragment;
@@ -17,6 +15,8 @@ import edu.mit.lastmile.km2.fragment.delivery.DeliveryTrackingDaysFragment_;
 import edu.mit.lastmile.km2.fragment.root.MainMenuFragment_;
 import edu.mit.lastmile.km2.fragment.shops.ShopsListFragment;
 import edu.mit.lastmile.km2.fragment.shops.ShopsListFragment_;
+import edu.mit.lastmile.km2.fragment.summary.SummaryFragment;
+import edu.mit.lastmile.km2.fragment.summary.SummaryFragment_;
 import edu.mit.lastmile.km2.fragment.traffic.TrafficListFragment;
 import edu.mit.lastmile.km2.fragment.traffic.TrafficListFragment_;
 
@@ -50,7 +50,6 @@ public class RootActivity extends BaseActivity implements NavigationDrawerFragme
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-    	Log.d(Config.LOG_TAG, "position: " + position);
         switch (position) {
 			case TrafficListFragment.SECTION:
 				replaceFragment(new TrafficListFragment_());
@@ -60,6 +59,8 @@ public class RootActivity extends BaseActivity implements NavigationDrawerFragme
 				break;
 			case DeliveryTrackingDaysFragment.SECTION:
 				replaceFragment(new DeliveryTrackingDaysFragment_());
+			case SummaryFragment.SECTION:
+				replaceFragment(new SummaryFragment_());
 			default:
 				replaceFragment(new MainMenuFragment_());
 				break;
@@ -69,9 +70,6 @@ public class RootActivity extends BaseActivity implements NavigationDrawerFragme
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (!mNavigationDrawerFragment.isDrawerOpen()) {
-            // Only show items in the action bar relevant to this screen
-            // if the drawer is not showing. Otherwise, let the drawer
-            // decide what to show in the action bar.
             //getMenuInflater().inflate(R.menu.global, menu);
             restoreActionBar();
             return false;
@@ -90,6 +88,9 @@ public class RootActivity extends BaseActivity implements NavigationDrawerFragme
 				break;
 			case DeliveryTrackingDaysFragment.SECTION:
 				mTitle = getString(R.string.delivery_tracking_btn);
+			case SummaryFragment.SECTION:
+				mTitle = getString(R.string.summary_title);
+				break;
 			default:
 				mTitle = getString(R.string.app_name);
 				break;

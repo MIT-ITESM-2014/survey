@@ -42,4 +42,8 @@
     <dimen name="delivery_tracking_shop_column">160dp</dimen>
     <dimen name="delivery_tracking_shop_vspacing">6dp</dimen>
     <dimen name="delivery_tracking_shop_hspacing">3dp</dimen>
+    
+    <!-- Summary -->
+    <dimen name="upload_box_text">14sp</dimen>
+    <dimen name="upload_box_counter_text">56sp</dimen>
 </resources>

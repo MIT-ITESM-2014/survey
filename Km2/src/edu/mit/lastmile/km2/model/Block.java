@@ -41,7 +41,7 @@ public class Block {
 
 	@Override
 	public String toString() {
-		return "Block [id=" + id + ", kmId=" + kmId + ", researchId=" + researchId + "]";
+		return "" + researchId;
 	}
 	
 }
